@@ -31,6 +31,6 @@ return [
     'DebugKit' => ['onlyDebug' => true],
     'Bake' => ['onlyCli' => true, 'optional' => true],
     'Migrations' => ['onlyCli' => true],
-
+    'Cake/Queue' => ['onlyCli' => true],
     // Additional plugins here
 ];

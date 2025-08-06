@@ -10,6 +10,7 @@
         "cakephp/migrations": "^4.0.0",
         "cakephp/plugin-installer": "^2.0",
         "cakephp/queue": "@stable",
+        "enqueue/fs": "@stable",
         "mobiledetect/mobiledetectlib": "^4.8.03"
     },
     "require-dev": {
