@@ -22,8 +22,6 @@ services:
     environment:
       - WEB_DOCUMENT_ROOT=/application/webroot
       - DATABASE_URL=postgres://my_app:secret@pg16:5432/my_app
-    ports:
-      - "80:80"
 
   worker:
     image: webdevops/php-nginx:8.3
