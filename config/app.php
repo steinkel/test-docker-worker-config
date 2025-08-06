@@ -467,21 +467,8 @@ return [
             // This can be overridden when queuing or processing messages
             'queue' => 'default',
 
-            // The name of a configured logger, default: null
-            'logger' => 'stdout',
-
             // The amount of time in milliseconds to sleep if no jobs are currently available. default: 10000
             'receiveTimeout' => 1000,
-
-            // (optional) The cache configuration for storing unique job ids. `duration`
-            // should be greater than the maximum length of time any job can be expected
-            // to remain on the queue. Otherwise, duplicate jobs may be
-            // possible. Defaults to +24 hours. Note that `File` engine is only suitable
-            // for local development.
-            // See https://book.cakephp.org/4/en/core-libraries/caching.html#configuring-cache-engines.
-            'uniqueCache' => [
-                'engine' => 'File',
-            ],
         ]
     ],
 ];
