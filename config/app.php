@@ -461,7 +461,7 @@ return [
         'default' => [
             // A DSN for your configured backend. default: null
             // Can contain protocol/port/username/password or be null if the backend defaults to localhost
-            'url' => 'file:///tmp/',
+            'url' => env('QUEUE_DEFAULT_URL', 'file:///tmp/'),
 
             // The queue that will be used for sending messages. default: default
             // This can be overridden when queuing or processing messages

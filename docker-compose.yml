@@ -13,14 +13,23 @@ services:
       - PGPASSWORD=secret
     restart: unless-stopped
 
+  redis:
+    image: redis:7
+    volumes:
+      - ./redis_data:/data
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
   cakephp:
     build:
       context: .
       dockerfile: Dockerfile.cakephp
     environment:
       - DATABASE_URL=postgres://my_app:secret@psql16:5432/my_app
+      - QUEUE_DEFAULT_URL=redis://redis:6379
     depends_on:
       - psql16
+      - redis
     restart: unless-stopped
 
   worker:
@@ -29,7 +38,9 @@ services:
       dockerfile: Dockerfile.worker
     environment:
       - DATABASE_URL=postgres://my_app:secret@psql16:5432/my_app
+      - QUEUE_DEFAULT_URL=redis://redis:6379
     depends_on:
       - psql16
+      - redis
     restart: unless-stopped
 
