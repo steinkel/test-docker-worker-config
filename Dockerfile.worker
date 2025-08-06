@@ -5,6 +5,9 @@ WORKDIR /application
 # Copy application files
 COPY . /application
 
+# Install composer dependencies
+RUN composer install --no-interaction --no-dev --optimize-autoloader
+
 # Copy supervisor configuration
 COPY config/supervisor/worker.conf /etc/supervisor/conf.d/worker.conf
 
