@@ -6,7 +6,7 @@ WORKDIR /application
 COPY . /application
 
 # Install composer dependencies
-RUN composer install --no-interaction --no-dev --optimize-autoloader
+RUN composer install --no-interaction --optimize-autoloader
 
 # Set environment variables
 ENV WEB_DOCUMENT_ROOT=/application/webroot
