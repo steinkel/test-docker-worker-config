@@ -13,7 +13,7 @@
         "enqueue/fs": "@stable",
         "enqueue/redis": "^0.10.26",
         "mobiledetect/mobiledetectlib": "^4.8.03",
-        "predis/predis": "@stable"
+        "predis/predis": "^3"
     },
     "require-dev": {
         "cakephp/bake": "^3.0.0",

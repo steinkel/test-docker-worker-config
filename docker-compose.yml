@@ -31,6 +31,8 @@ services:
       - psql16
       - redis
     restart: unless-stopped
+    ports:
+      - 8088:80
 
   worker:
     build:

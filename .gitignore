@@ -51,3 +51,4 @@ nbproject/*
 yarn-debug.log
 yarn-error.log
 postgres_data/
+redis_data/

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2deebceed3ee9b4ef69d2c95d8d7a9af",
+    "content-hash": "c427a4f8fbbfff78545e5cda4b574eb9",
     "packages": [
         {
             "name": "brick/math",
@@ -6873,8 +6873,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "cakephp/queue": 0,
-        "enqueue/fs": 0,
-        "predis/predis": 0
+        "enqueue/fs": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
