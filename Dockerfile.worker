@@ -16,5 +16,5 @@ RUN apt-get update && \
     apt-get install -y supervisor && \
     mkdir -p /var/log/supervisor
 
-# Command to run supervisor
-CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+# Command to run syslog-ng and supervisor
+CMD service syslog-ng start && supervisord -c /etc/supervisor/supervisord.conf
