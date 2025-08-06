@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -23,5 +24,4 @@ class JobsController extends AppController
         QueueManager::push(ExampleJob::class, ['some' => 'data']);
         return $this->response->withStringBody('Job added to queue');
     }
-
 }
