@@ -12,11 +12,5 @@ RUN composer install --no-interaction --optimize-autoloader
 COPY config/supervisor/worker.conf /etc/supervisor/conf.d/worker.conf
 COPY config/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 
-# Install supervisor and set up log directory
-RUN apt-get update && \
-    apt-get install -y supervisor && \
-    mkdir -p /var/log/supervisor && \
-    mkdir -p /var/run
-
 # Command to run syslog-ng and supervisor
 CMD supervisord -c /etc/supervisor/supervisord.conf
