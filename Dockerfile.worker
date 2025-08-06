@@ -1,0 +1,17 @@
+FROM webdevops/php-nginx:8.3
+
+WORKDIR /application
+
+# Copy application files
+COPY . /application
+
+# Copy supervisor configuration
+COPY config/supervisor/worker.conf /etc/supervisor/conf.d/worker.conf
+
+# Install supervisor and set up log directory
+RUN apt-get update && \
+    apt-get install -y supervisor && \
+    mkdir -p /var/log/supervisor
+
+# Command to run supervisor
+CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]

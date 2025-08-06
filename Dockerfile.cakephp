@@ -1,0 +1,9 @@
+FROM webdevops/php-nginx:8.3
+
+WORKDIR /application
+
+# Copy application files
+COPY . /application
+
+# Set environment variables
+ENV WEB_DOCUMENT_ROOT=/application/webroot

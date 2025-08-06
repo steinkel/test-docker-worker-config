@@ -14,29 +14,21 @@ services:
     restart: unless-stopped
 
   cakephp:
-    image: webdevops/php-nginx:8.3
-    working_dir: /application
-    volumes:
-      - .:/application
+    build:
+      context: .
+      dockerfile: Dockerfile.cakephp
     environment:
-      - WEB_DOCUMENT_ROOT=/application/webroot
       - DATABASE_URL=postgres://my_app:secret@psql16:5432/my_app
     depends_on:
       - psql16
     restart: unless-stopped
 
   worker:
-    image: webdevops/php-nginx:8.3
-    working_dir: /application
-    volumes:
-      - .:/application
-      - ./config/supervisor/worker.conf:/etc/supervisor/conf.d/worker.conf:ro
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
     environment:
       - DATABASE_URL=postgres://my_app:secret@psql16:5432/my_app
-    command: >
-      bash -c "apt-get update && apt-get install -y supervisor &&
-      mkdir -p /var/log/supervisor &&
-      supervisord -c /etc/supervisor/supervisord.conf"
     depends_on:
       - psql16
     restart: unless-stopped
