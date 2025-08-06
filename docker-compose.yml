@@ -17,7 +17,7 @@ services:
     image: webdevops/php-nginx:8.3
     working_dir: /application
     volumes:
-      - app_data:/application
+      - .:/application
     environment:
       - WEB_DOCUMENT_ROOT=/application/webroot
       - DATABASE_URL=postgres://my_app:secret@psql16:5432/my_app
@@ -29,7 +29,7 @@ services:
     image: webdevops/php-nginx:8.3
     working_dir: /application
     volumes:
-      - app_data:/application
+      - .:/application
       - ./config/supervisor/worker.conf:/etc/supervisor/conf.d/worker.conf:ro
     environment:
       - DATABASE_URL=postgres://my_app:secret@psql16:5432/my_app
