@@ -3,9 +3,7 @@ services:
   psql16:
     image: postgres:16
     volumes:
-      - type: bind
-        source: ./postgres_data
-        target: /var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=my_app
       - POSTGRES_PASSWORD=secret
@@ -19,9 +17,7 @@ services:
     image: webdevops/php-nginx:8.3
     working_dir: /application
     volumes:
-      - type: bind
-        source: .
-        target: /application
+      - .:/application
     environment:
       - WEB_DOCUMENT_ROOT=/application/webroot
       - DATABASE_URL=postgres://my_app:secret@psql16:5432/my_app
@@ -33,13 +29,8 @@ services:
     image: webdevops/php-nginx:8.3
     working_dir: /application
     volumes:
-      - type: bind
-        source: .
-        target: /application
-      - type: bind
-        source: ./config/supervisor/worker.conf
-        target: /etc/supervisor/conf.d/worker.conf
-        read_only: true
+      - .:/application
+      - ./config/supervisor/worker.conf:/etc/supervisor/conf.d/worker.conf:ro
     environment:
       - DATABASE_URL=postgres://my_app:secret@psql16:5432/my_app
     command: >
